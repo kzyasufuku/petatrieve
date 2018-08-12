@@ -1,0 +1,8 @@
+{
+  "expath": "misc/",
+  "list": { 
+       "01foo": "inf_foo.txt" ,
+      "98wide": "infWide.txt"  ,
+    "02narrow": "inf_narrow.txt"
+  }
+}
