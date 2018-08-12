@@ -2,7 +2,7 @@
 peta-trieve  
   
 expecting like:  
-$ retriever.pl   retfiles.json  retwords.json  
+$ ./retriever.pl   retfiles.json  retwords.json  
 search word(s): '山本' '浩太郎'  
 ==== files/inf_hokkaido.txt ===============  
 ==== files/inf_sendai.txt =================  
