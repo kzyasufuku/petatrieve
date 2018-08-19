@@ -10,21 +10,22 @@ use threads;
 #use JSON;
 use JSON qw/encode_json decode_json/;
 
-#binmode STDIN, ':encoding(cp932)';
-#binmode STDOUT, ':encoding(cp932)';
-#binmode STDERR, ':encoding(cp932)';
-binmode STDIN,  ':utf8';
-binmode STDOUT, ':utf8';
-binmode STDERR, ':utf8';
-
 sub debug_print {
   #print STDERR 'debug: ',@_; #この行をコメントアウトするとデバックプリントしない
 }
-debug_print "$^O\n";
+
+if ($^O eq 'MSWin32') {
+  binmode STDIN, ':encoding(cp932)';
+  binmode STDOUT, ':encoding(cp932)';
+  binmode STDERR, ':encoding(cp932)';
+} else {
+  binmode STDIN,  ':utf8';
+  binmode STDOUT, ':utf8';
+  binmode STDERR, ':utf8';
+}
+
 my @pgm = split(/\\/, $0);
-my $pgm = pop @pgm;
-my $pgmpath = join('\\', @pgm);
-print "*** Start $pgm ***\n";
+print "*** $^O Start $pgm[-1] '@ARGV' ***\n";
 goto help if($#ARGV < 0);
 
 my $retfiles = shift @ARGV;
